@@ -23,7 +23,7 @@ let body = drawing.append("rect")
     .attr("y", 120)
     .attr("width", 10)
     .attr("height", 160)
-    .attr("fill", "green")
+    .attr("fill", "#00CC00")
     .attr("stroke", "black");
 
 /* Butterfly Head / Eyes */
@@ -34,7 +34,7 @@ let leftEye = drawing.append("ellipse") // oval shape
     .attr("cy", 120)
     .attr("rx", 10)
     .attr("ry", 12)
-    .attr("fill", "black")
+    .attr("fill", "#FF0000")
     .attr("stroke", "black");
 
 /* right eye */
@@ -43,7 +43,7 @@ let rightEye = drawing.append("ellipse")
     .attr("cy", 120)
     .attr("rx", 10)
     .attr("ry", 12)
-    .attr("fill", "black")
+    .attr("fill", "#FF0000")
     .attr("stroke", "black");
 
 
@@ -61,14 +61,14 @@ let rightEye = drawing.append("ellipse")
 /*  left upper wing */
 let leftUpperWing = drawing.append("polygon")
     .attr("points", "140,160 225,100 247,200")
-    .attr("fill", "red")
+    .attr("fill", "#FFFF33")
     .attr("stroke", "black");
 
 
    /*  right upper wing */
 let rightUpperWing = drawing.append("polygon")
     .attr("points", "360,155 275,100 253,200")
-    .attr("fill", "purple")
+    .attr("fill", "#FFFF33")
     .attr("stroke", "black");
 
 
@@ -76,13 +76,13 @@ let rightUpperWing = drawing.append("polygon")
 
 let leflowerwing = drawing.append("polygon")
 .attr("points", "160,200 247,200 247,300")
-.attr("fill", "blue")
+.attr("fill", "#CC6633")
 .attr("stroke", "black");
 
 /*  right lower wing */
 let rightLowerWing = drawing.append("polygon")
     .attr("points", "340,200 253,200 253,300")
-    .attr("fill", "yellow")
+    .attr("fill", "#CC6633")
     .attr("stroke", "black");
 
     //uncomment this code for a bigger butterfly lower wing
@@ -99,7 +99,7 @@ let leftAntenna = drawing.append("line")
     .attr("y1", 110)
     .attr("x2", 220)
     .attr("y2", 60)
-    .attr("stroke", "black");
+    .attr("stroke", "#000000");
 
 /* right antenna */
 let rightAntenna = drawing.append("line")
@@ -107,7 +107,7 @@ let rightAntenna = drawing.append("line")
     .attr("y1", 110)
     .attr("x2", 280)
     .attr("y2", 60)
-    .attr("stroke", "black");
+    .attr("stroke", "#000000");
 
 
 
