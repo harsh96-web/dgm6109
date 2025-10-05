@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Collectable Card Ordering</title>
+</head>
+
+<body>
+  <h1>Collectable Card Ordering</h1>
+
+  <p>
+    Which “Magic: The Gathering” card pack do you want to purchase?
+    <select id="pack">
+      <option value="">-- choose one --</option>
+      <option value="retail">Retail booster pack</option>
+      <option value="starter">Collectable starter pack</option>
+      <option value="firstEdition">1st edition complete set</option>
+    </select>
+  </p>
+
+  <p>
+    Please enter your credit card number:
+    <input id="ccNumber" type="text" placeholder="6 digits">
+  </p>
+
+  <p>
+    Please enter your CCV code:
+    <input id="ccv" type="text" placeholder="3 digits">
+  </p>
+
+  <button id="submit">Submit Form</button>
+  <div id="output"></div>
+  <button id="reset" hidden>Start Over</button>
+
+  <hr>
+  <a href="./flowchart.pdf" target="_blank">View my flowchart</a>
+
+  <script src="output.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
