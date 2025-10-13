@@ -2,13 +2,12 @@
 
 /*
   Project 2-4: Collectable Card Ordering System
-  Author: Harsh Kumar
-  Course: DGM6109 – Northeastern University Vancouver
-  Final Version (Week 05 Submission)
+  Name: Harsh Kumar
+  Project2-final
   Description:
-  Validates user input for Magic: The Gathering orders,
+  Validates user input for Magic: The Gathering card orders,
   checks CCV rules, applies shipping or credit-limit rules,
-  and displays all relevant messages clearly.
+  and displays all messages clearly.
   Matches flowchart.pdf (Final Horizontal Non-Overlapping Version)
 */
 
@@ -21,7 +20,7 @@ document.getElementById("reset").addEventListener("click", resetForm);
 
 /**
  * processForm()
- * Reads form values, runs validateData(), then evaluateAnswers().
+ * Reads user inputs, runs validateData(), then evaluateAnswers().
  * Toggles Submit ↔ Start Over when complete.
  */
 function processForm() {
@@ -30,48 +29,55 @@ function processForm() {
   ccv = document.getElementById("ccv").value.trim();
 
   clear(); // clear previous messages
+
   let valid = validateData();
 
-  // If validation passes, run evaluation
   if (valid) {
     let done = evaluateAnswers();
     if (done) {
       toggleButtons();
     } else {
-      output("----------------------------------------");
+      rule(); // horizontal divider after error
     }
   } else {
-    output("----------------------------------------");
+    rule();
   }
 }
 
 /**
+ * allDigits(str)
+ * Helper that checks every character is a number (0–9).
+ */
+function allDigits(str) {
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    if (ch < "0" || ch > "9") return false;
+  }
+  return true;
+}
+
+/**
  * validateData()
- * Checks:
- *  – A pack is selected
+ * Checks three conditions:
+ *  – Pack is selected
  *  – Card number = 6 digits
  *  – CCV = 3 digits
- *  Bonus: shows *all* invalid fields before stopping.
- * Returns: true if all valid; false otherwise.
+ * Bonus: Shows *all* invalid fields before returning false.
  */
 function validateData() {
-  let isValid = true; // assume valid until proven false
+  let isValid = true;
 
-  // 1️⃣ Check for pack selection
   if (!pack) {
     output("Please select a card pack option.");
     isValid = false;
   }
 
-  // 2️⃣ Check card number length (exactly 6 digits)
-  if (!/^[0-9]{6}$/.test(ccNumber)) {
-  output("Credit card number must be exactly 6 digits.");
-  isValid = false;
-}
+  if (ccNumber.length !== 6 || !allDigits(ccNumber)) {
+    output("Credit card number must be exactly 6 digits.");
+    isValid = false;
+  }
 
-
-  // 3️⃣ Check CCV length (exactly 3 digits)
-  if (ccv.length !== 3 || isNaN(ccv)) {
+  if (ccv.length !== 3 || !allDigits(ccv)) {
     output("CCV code must be exactly 3 digits.");
     isValid = false;
   }
@@ -82,10 +88,10 @@ function validateData() {
 /**
  * evaluateAnswers()
  * Applies rules from Project 2-4:
- *  – CCV digits = pair sums of card digits  
- *  – Price > 1000 → credit limit fail  
- *  – Price < 50 → add $2 shipping  
- * Returns: true on success, false on any error.
+ *  – Each CCV digit = sum of two card digits
+ *  – Price > $1000 → credit limit fail
+ *  – Price < $50 → add $2 shipping
+ * Returns: true on success, false on any failure.
  */
 function evaluateAnswers() {
   const prices = {
@@ -99,11 +105,11 @@ function evaluateAnswers() {
     firstEdition: "1st edition complete set"
   };
 
-  // Split digits into arrays
+  // Convert digits to numbers
   const [d1, d2, d3, d4, d5, d6] = ccNumber.split("").map(Number);
   const [c1, c2, c3] = ccv.split("").map(Number);
 
-  // --- CCV pair-sum check ---
+  // --- CCV validation ---
   if (c1 !== d1 + d2 || c2 !== d3 + d4 || c3 !== d5 + d6) {
     output("Incorrect credit card information entered (CCV mismatch).");
     return false;
@@ -111,7 +117,7 @@ function evaluateAnswers() {
 
   const price = prices[pack];
 
-  // --- Credit limit check ---
+  // --- Credit limit rule ---
   if (price > 1000.00) {
     output("Unfortunately, the price of this item exceeds your credit limit.");
     return false;
@@ -128,35 +134,44 @@ function evaluateAnswers() {
   const total = price + shippingFee;
   const finalPrice = "$" + total.toFixed(2); // ensure $D.CC format
 
-  // --- Success message ---
+  // --- Successful order output ---
   output(`Your card pack type for “Magic: The Gathering” (${packNames[pack]}) will be delivered to you as soon as possible.`);
   output(`Your credit card will be billed a total of ${finalPrice}.`);
   output(shippingNote);
+
   return true;
 }
 
 /**
- * Helper: clear()
- * Clears output area before new run.
+ * clear()
+ * Clears the output area.
  */
 function clear() {
   document.getElementById("output").innerHTML = "";
 }
 
 /**
- * Helper: output(msg)
- * Displays message in output area.
+ * output(msg)
+ * Appends a message to the #output div.
  */
 function output(msg) {
-  let out = document.getElementById("output");
-  let p = document.createElement("p");
+  const out = document.getElementById("output");
+  const p = document.createElement("p");
   p.textContent = msg;
   out.appendChild(p);
 }
 
 /**
- * Helper: toggleButtons()
- * Hides Submit button and shows Reset button.
+ * rule()
+ * Inserts a horizontal rule (<hr>) after a validation round.
+ */
+function rule() {
+  document.getElementById("output").appendChild(document.createElement("hr"));
+}
+
+/**
+ * toggleButtons()
+ * Switches between Submit and Reset buttons.
  */
 function toggleButtons() {
   document.getElementById("submit").toggleAttribute("hidden");
@@ -165,7 +180,7 @@ function toggleButtons() {
 
 /**
  * resetForm()
- * Clears all inputs and toggles buttons back.
+ * Clears all fields and resets button visibility.
  */
 function resetForm() {
   document.getElementById("pack").value = "";
