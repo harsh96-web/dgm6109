@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harsh Kumar Lab 5 Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>Harsh Kumar Lab 5 Demo</h1>
+
+  <!-- SHAPE 1 -->
+  <label for="shape1">Shape 1 – Harsh Kumar <br>(top-left):</label>
+  <select id="shape1">
+    <option value="butterfly">🦋 Butterfly – Harsh Kumar (Drawing #5)</option>
+    <option value="ladybug">🐞 Ladybug – Qing Dan (Drawing #13)</option>
+    <option value="rooster">🐓 Rooster – Amayra (Drawing #7)</option>
+    <option value="rabbit">🐰 Rabbit – Pattamaporn (Drawing #12)</option>
+  </select>
+  <br><br>
+
+  <!-- SHAPE 2 -->
+  <label for="shape2">Shape 2 – Qing Dan <br>(top-right):</label>
+  <select id="shape2">
+    <option value="ladybug">🐞 Ladybug – Qing Dan (Drawing #13)</option>
+    <option value="butterfly">🦋 Butterfly – Harsh Kumar (Drawing #5)</option>
+    <option value="rooster">🐓 Rooster – Amayra (Drawing #7)</option>
+    <option value="rabbit">🐰 Rabbit – Pattamaporn (Drawing #12)</option>
+  </select>
+  <br><br>
+
+  <!-- SHAPE 3 -->
+  <label for="shape3">Shape 3 – Amayra <br>(bottom-left):</label>
+  <select id="shape3">
+    <option value="rooster">🐓 Rooster – Amayra (Drawing #7)</option>
+    <option value="butterfly">🦋 Butterfly – Harsh Kumar (Drawing #5)</option>
+    <option value="ladybug">🐞 Ladybug – Qing Dan (Drawing #13)</option>
+    <option value="rabbit">🐰 Rabbit – Pattamaporn (Drawing #12)</option>
+  </select>
+  <br><br>
+
+  <!-- SHAPE 4 -->
+  <label for="shape4">Shape 4 – Pattamaporn <br>(bottom-right):</label>
+  <select id="shape4">
+    <option value="rabbit">🐰 Rabbit – Pattamaporn (Drawing #12)</option>
+    <option value="butterfly">🦋 Butterfly – Harsh Kumar (Drawing #5)</option>
+    <option value="ladybug">🐞 Ladybug – Qing Dan (Drawing #13)</option>
+    <option value="rooster">🐓 Rooster – Amayra (Drawing #7)</option>
+  </select>
+  <br><br>
+
+  <!-- ORIGIN OPTION -->
+  <label for="origin">Show Origin Points:</label>
+  <select id="origin">
+    <option value="false">No</option>
+    <option value="true">Yes</option>
+  </select>
+  <br><br>
+
+  <button id="drawBtn">Draw!</button>
+  <div id="canvas"></div>
+
+  <!-- Drawing files (load order matters) -->
+  <script src="elements/butterfly.js"></script>
+  <script src="elements/ladybug.js"></script>
+  <script src="elements/rooster.js"></script>
+  <script src="elements/rabbit.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
