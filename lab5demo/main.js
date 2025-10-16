@@ -1,22 +1,17 @@
-"use strict";
-
-document.getElementById("drawBtn").addEventListener("click", drawButterfly);
+document.getElementById('drawBtn').addEventListener('click', drawButterfly);
 
 function drawButterfly() {
   d3.select("#canvas").html("");
 
-  const showOrigin = document.getElementById("origin").value === "true";
-
-  const svg = d3.select("#canvas")
-    .append("svg")
-    .attr("width", 500)
-    .attr("height", 500);
+  let svg = d3.select("#canvas").append("svg")
+    .attr("width", 700)
+    .attr("height", 700);
 
   svg.append("rect")
-    .attr("width", 500)
-    .attr("height", 500)
+    .attr("width", 700)
+    .attr("height", 700)
     .attr("fill", "white")
     .attr("stroke", "red");
 
-  butterfly(svg, 250, 250, showOrigin);
+  butterfly(svg, 350, 350, true);
 }
