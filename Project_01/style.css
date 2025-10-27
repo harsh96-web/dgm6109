@@ -1,0 +1,289 @@
+/* Project #1 – Fitness Motivation Style Guide */
+/* Harsh Kumar */
+/* This file includes my custom styling for typography, buttons, navigation, form, and linked image */
+
+/* BASE */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  background-color: #f8f8f8;
+  color: #222222;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(to right, #201e55, #1E174D, #836EF9);
+  color: #FFFFFF;
+  padding: 0.7rem 2rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #00e0b8;
+}
+
+/* CTA BUTTON */
+.cta-btn {
+  background-color: #836EF9;
+  color: #FFFFFF;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background-color: #FFFFFF;
+  color: #836EF9;
+}
+
+/* HERO */
+.hero-container {
+  display: flex;
+  width: 100%;
+  min-height: 380px;
+}
+
+.hero-text {
+  flex: 1;
+  background: linear-gradient(135deg, #34307b, #4e33a0, #836EF9);
+  color: #FFFFFF;
+  padding: 3rem 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-text a {
+  color: #00e0b8;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.hero-text a:hover {
+  color: #ffffff;
+}
+
+.hero-text span {
+  color: #00e0b8;
+}
+
+.hero-btn {
+  background-color: #FFFFFF;
+  color: #4A2F9E;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+  width: fit-content;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #00e0b8;
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* TYPOGRAPHY */
+.typography {
+  padding: 2rem;
+}
+
+/* COLOR PALETTE */
+.colors {
+  padding: 2rem;
+  background-color: #FFFFFF;
+}
+
+.palette-info {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.swatches {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.swatch:hover {
+  transform: scale(1.03);
+}
+
+.primary-color { background-color: #4A2F9E; color: #FFFFFF; }
+.dark-color { background-color: #2D296E; color: #FFFFFF; }
+.accent-color { background-color: #836EF9; color: #FFFFFF; }
+.gray-color { background-color: #CCCCCC; color: #222222; }
+.white-color { background-color: #FFFFFF; color: #222222; border: 1px solid #ccc; }
+
+/* BUTTONS */
+.buttons {
+  padding: 2rem;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 0.6rem 1.3rem;
+  transition: 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  outline: none;
+}
+
+/* PRIMARY BUTTON */
+button.primary {
+  background-color: #4A2F9E;
+  color: #FFFFFF;
+  border: none;
+}
+
+button.primary:hover {
+  background-color: #836EF9;
+}
+
+/* SECONDARY BUTTON */
+button.secondary {
+  background-color: #2D296E;
+  color: #FFFFFF;
+  border: none;
+}
+
+button.secondary:hover {
+  background-color: #4A2F9E;
+}
+
+/* OUTLINE BUTTON */
+button.outline {
+  background-color: transparent;
+  border: 2px solid #4A2F9E;
+  color: #4A2F9E;
+}
+
+button.outline:hover {
+  background-color: #4A2F9E;
+  color: #FFFFFF;
+}
+
+/* FORM */
+.form-section {
+  padding: 2rem;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.subscribe-form input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* LINKED IMAGE */
+.linked-image {
+  padding: 2rem;
+}
+
+.image-card {
+  width: 380px;
+  background: #FFFFFF;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0px 3px 12px rgba(0,0,0,0.15);
+}
+
+.image-card:hover {
+  transform: scale(1.03);
+}
+
+.image-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #2D296E;
+  color: #FFFFFF;
+  padding: 1.5rem;
+  text-align: center;
+}
+/* Accessibility & rubric: focus-visible states */
+.navbar a:focus-visible,
+.cta-btn:focus-visible,
+.hero-btn:focus-visible,
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px dashed #00e0b8;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
