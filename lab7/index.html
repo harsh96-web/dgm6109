@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab HW 7 — Harsh Kumar</title>
+
+  <!-- Load D3.js library for data visualization -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- My custom stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Workout Duration vs Sleep Hours</h1>
+    <h3>Harsh Kumar — Lab Homework 7</h3>
+
+    <!-- Hypothesis text clearly stated -->
+    <p class="hypothesis">
+      <strong>Hypothesis:</strong> As workout duration (minutes) increases, sleep hours (hours) increase.
+    </p>
+
+    <!-- Small intro reflection -->
+    <p style="text-align:center; font-size:14px; max-width:600px; margin:14px auto;">
+      Based on my data collection, I observed that days with longer workouts usually led to deeper and longer sleep. 
+      This scatterplot helps me see that trend more clearly.
+    </p>
+
+    <!-- SVG area for D3 visualization -->
+    <svg id="chart" width="700" height="450"></svg>
+  </div>
+
+  <!-- My D3 script file -->
+  <script src="main.js"></script>
+</body>
+</html>
