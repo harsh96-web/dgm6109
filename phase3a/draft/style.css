@@ -1,0 +1,45 @@
+/* Class Homework #7 — Harsh Kumar */
+body {
+  font-family: "Inter", sans-serif;
+  background: #f8f8f8;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h3 {
+  color: #222;
+  margin: 5px;
+}
+
+.hypothesis {
+  font-size: 15px;
+  max-width: 650px;
+  margin: 10px auto 25px;
+  color: #333;
+  line-height: 1.5;
+}
+
+svg {
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+circle {
+  transition: 0.25s;
+  opacity: 0.9;
+}
+
+circle:hover {
+  stroke: #000;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 13px;
+  color: #555;
+  margin-top: 12px;
+}
