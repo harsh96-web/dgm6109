@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lab #8 — Workout, Sleep & Protein | Harsh Kumar </title>
+
+  <!-- Load D3.js library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- External CSS for layout and tooltip styling -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Main title and student info -->
+    <h1>Lab #8 — Workout, Sleep & Protein Bubbleplot</h1>
+    <h3>Harsh Kumar </h3>
+
+    <!-- Hypothesis section: written in required "As X increases... Y also..." format -->
+    <p class="hypothesis">
+      <strong>Hypothesis:</strong>
+      As <em>workout duration (minutes)</em> increases, <em>sleep hours (hours)</em> also increase.
+      Additionally, higher <em>protein intake (grams)</em> corresponds to improved restfulness,
+      represented through bubble size and color.
+      Colors range from <span class="red">red</span> (very tired) to <span class="green">green</span> (excellent rest).
+    </p>
+
+    <!-- SVG canvas kept inside allowed 900x675 range -->
+    <svg id="chart" width="900" height="600"></svg>
+
+    <!-- Simple legend description below the chart -->
+    <p class="note">
+      Bubble size = Protein (g) | Bubble color = Restfulness (1–5)
+    </p>
+
+
+  </div>
+
+  <!-- External JavaScript containing all D3 drawing logic -->
+  <script src="main.js"></script>
+</body>
+</html>
