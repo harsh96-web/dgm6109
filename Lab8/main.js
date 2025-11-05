@@ -1,25 +1,20 @@
 "use strict";
 
 /*
-  Lab Homework #8 — Harsh Kumar (DGM6109)
-  Bubbleplot: Workout Duration (x) vs Sleep Hours (y)
-  ---------------------------------------------------
-  Encodings:
-    • X-axis: workout duration (minutes)
-    • Y-axis: sleep hours (hours)
-    • Circle radius: protein intake (grams)  ← (third numeric property via scale)
-    • Circle color: restfulness level (1–5)  ← (fourth property via color)
-  Rubric coverage:
-    - Changed axis meaning from W7 baseline ✔
-    - scaleSqrt for size; linear axes ✔
-    - color legend + size legend, boxed/titled/labeled ✔
-    - sort so large circles draw first (in back) ✔
-    - axes, labels with units, reasonable ticks ✔
-    - SVG within 900×675, margins used to separate keys ✔
+  Lab Homework #8 — Harsh Kumar
+  Topic: Workout Duration (x) vs Sleep Hours (y)
+  
+  Hypothesis: As workout duration (minutes) increases, sleep hours (hours) 
+  also increase. Higher protein intake (grams) correlates with better 
+  restfulness. Colors show restfulness levels from red (very tired) to 
+  green (excellent rest).
+  
+  Building on my Phase 3a work by adding protein as bubble size.
 */
 
-// ---------------------------- STEP 1: DATASET ---------------------------- //
-// 12 observations (min required). Names mirror your previous weeks.
+// Dataset with 12 days of my workout tracking
+// Properties: date, duration (minutes), sleep (hours), protein (grams), restfulness (1-5 scale)
+
 const dataset = [
   { date: "2025-09-25", duration: 50,  sleep: 6.0, protein:  80, restfulness: 1 },
   { date: "2025-09-26", duration: 60,  sleep: 6.5, protein:  90, restfulness: 2 },
@@ -35,14 +30,16 @@ const dataset = [
   { date: "2025-10-06", duration: 102, sleep: 8.5, protein: 150, restfulness: 5 }
 ];
 
-// Sort so *largest* circles render first (back), smallest last (on top)
+// Sort by protein so bigger bubbles draw first (prevents hiding small ones)
 dataset.sort((a, b) => b.protein - a.protein);
 
 
-// ---------------------------- STEP 2: SVG SETUP ---------------------------- //
-// Keep within the assignment’s max.
+// Set up SVG with margins for axes and legends
+// Max allowed: 900x675, I'm using 900x640
+
 const svgWidth  = 900;
-const svgHeight = 640; // a bit taller than 600 for bottom breathing room
+const svgHeight = 640;
+// Configuration variables for margins
 const margin = { top: 70, right: 235, bottom: 100, left: 90 };
 
 const width  = svgWidth  - margin.left - margin.right;
@@ -54,38 +51,46 @@ const svg = d3.select("#chart")
   .append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top - 6})`);
 
-// (Debug margins if needed; comment out for submission per PDF)
-// svg.append("rect").attr("width", width).attr("height", height)
-//   .attr("fill", "none").attr("stroke", "#aaa").attr("stroke-dasharray", "6,6");
 
+// Create scales for positioning and sizing
+// Using d3.extent to get min/max values from data
 
-// ---------------------------- STEP 3: SCALES ---------------------------- //
-// Linear axes (readable), sqrt for area-consistent circle sizes.
 const xExtent = d3.extent(dataset, d => d.duration);
 const yExtent = d3.extent(dataset, d => d.sleep);
 const pExtent = d3.extent(dataset, d => d.protein);
 
+// X-axis from 0 to 125 minutes
 const xScale = d3.scaleLinear()
-  .domain(xExtent).nice()
+  .domain([0, 125])  
   .range([0, width]);
 
+// Y-axis from 0 to 10.22 hours (slightly adjusted for circular bubbles)
 const yScale = d3.scaleLinear()
-  .domain(yExtent).nice()
+  .domain([0, 10.22])   
   .range([height, 0]);
 
+// Square root scale for bubble radius (better for area perception)
 const rScale = d3.scaleSqrt()
   .domain(pExtent)
-  .range([5, 20]); // slightly larger max; we handled space with margins
+  .range([7, 21]); 
 
-// Discrete color mapping (ordinal) for 1–5 restfulness
+// Colors: red to green progression showing tiredness to excellent rest
+// Fixed colors for levels 4 and 5 to be more distinct
 const colorScale = d3.scaleOrdinal()
   .domain([1, 2, 3, 4, 5])
-  .range(["#e74c3c", "#f39c12", "#f1c40f", "#2ecc71", "#27ae60"]);
+  .range(["#e74c3c", "#f39c12", "#f1c40f", "#52c41a", "#237804"]);
 
 
-// ---------------------------- STEP 4: AXES ---------------------------- //
-const xAxis = d3.axisBottom(xScale).ticks(6).tickFormat(d => `${d} min`);
-const yAxis = d3.axisLeft(yScale).ticks(6).tickFormat(d => `${d} hrs`);
+// Make axes start from 0 (professor requirement)
+// Tick values: 0, 25, 50, 75, 100, 125 for x-axis
+
+const xAxis = d3.axisBottom(xScale)
+  .tickValues([0, 25, 50, 75, 100, 125])  
+  .tickFormat(d => `${d} min`);
+
+const yAxis = d3.axisLeft(yScale)
+  .tickValues([0, 2, 4, 6, 8, 10])  
+  .tickFormat(d => `${d} hrs`);
 
 svg.append("g")
   .attr("transform", `translate(0,${height})`)
@@ -93,36 +98,40 @@ svg.append("g")
 
 svg.append("g").call(yAxis);
 
-// Reference axis lines drawn using scales (per Class #7 reminder)
+// Light grid lines at the base and side (just for clarity)
 svg.append("line")
   .attr("x1", 0).attr("y1", height)
   .attr("x2", width).attr("y2", height)
-  .attr("stroke", "#d0d0d0").attr("stroke-width", 1);
+  .attr("stroke", "#d0d0d0");
 
 svg.append("line")
   .attr("x1", 0).attr("y1", height)
   .attr("x2", 0).attr("y2", 0)
-  .attr("stroke", "#d0d0d0").attr("stroke-width", 1);
+  .attr("stroke", "#d0d0d0");
 
 
-// ---------------------------- STEP 5: TOOLTIP ---------------------------- //
+// Tooltip for showing details on hover
+
 const tooltip = d3.select("body")
   .append("div")
   .attr("class", "tooltip");
 
 
-// ---------------------------- STEP 6: BUBBLES ---------------------------- //
+// Draw circles for each data point
+// Using transparency (0.75) to see overlapping bubbles
+
 svg.selectAll("circle.dot")
   .data(dataset)
   .enter()
   .append("circle")
   .attr("class", "dot")
-  .attr("cx", d => xScale(d.duration))
-  .attr("cy", d => yScale(d.sleep))
-  .attr("r",  d => rScale(d.protein))
+  .attr("cx", d => xScale(d.duration))  // Exact x position from data
+  .attr("cy", d => yScale(d.sleep))     // Exact y position from data
+  .attr("r",  d => rScale(d.protein))   // Size based on protein
   .attr("fill", d => colorScale(d.restfulness))
   .attr("stroke", "#222")
-  .attr("opacity", 0.88)
+  .attr("stroke-width", 1.5)
+  .attr("opacity", 0.75)  // Some transparency to see overlapping bubbles
   .on("mouseover", (event, d) => {
     tooltip
       .style("opacity", 0.98)
@@ -135,19 +144,25 @@ svg.selectAll("circle.dot")
       )
       .style("left", (event.pageX + 14) + "px")
       .style("top",  (event.pageY - 36) + "px");
+
+    // Slightly enlarge bubble on hover
     d3.select(event.currentTarget)
       .transition().duration(120)
-      .attr("r", rScale(d.protein) + 3);
+      .attr("r", rScale(d.protein) + 3)
+      .attr("opacity", 1);
   })
   .on("mouseout", (event, d) => {
     tooltip.style("opacity", 0);
     d3.select(event.currentTarget)
       .transition().duration(120)
-      .attr("r", rScale(d.protein));
+      .attr("r", rScale(d.protein))
+      .attr("opacity", 0.75);
   });
 
 
-// ---------------------------- STEP 7: AXIS LABELS + TITLE ---------------------------- //
+// ---------------------------- TITLES & LABELS ---------------------------- //
+// Axis labels and chart title for clarity.
+
 svg.append("text")
   .attr("x", width / 2)
   .attr("y", height + 56)
@@ -168,10 +183,11 @@ svg.append("text")
   .attr("y", -26)
   .attr("text-anchor", "middle")
   .style("font-weight", "700")
-  .text("Bubble Chart — Workout, Sleep & Protein");
+  .text("Workout, Sleep & Protein Bubble Chart");
 
 
-// ---------------------------- STEP 8: COLOR LEGEND (BOXED) ---------------------------- //
+// Legend for colors - showing all 5 restfulness levels
+
 const legendX = width + 20;
 const restBoxY = 8;
 const restBoxW = 185;
@@ -184,14 +200,15 @@ svg.append("rect")
 
 svg.append("text")
   .attr("x", legendX + 12).attr("y", restBoxY + 22)
-  .style("font-weight", "800").text("Restfulness (1–5)");
+  .style("font-weight", "800")
+  .text("Restfulness (1–5)");
 
 const restfulnessLegend = [
   { label: "1 = Very Tired", color: "#e74c3c" },
   { label: "2 = Low",        color: "#f39c12" },
   { label: "3 = Moderate",   color: "#f1c40f" },
-  { label: "4 = Good",       color: "#2ecc71" },
-  { label: "5 = Excellent",  color: "#27ae60" }
+  { label: "4 = Good",       color: "#52c41a" },
+  { label: "5 = Excellent",  color: "#237804" }
 ];
 
 svg.selectAll(".legend-color")
@@ -205,20 +222,19 @@ svg.selectAll(".legend-color")
       .attr("r", 7).attr("fill", d.color).attr("stroke", "#222");
     d3.select(this).append("text")
       .attr("x", 18).attr("y", 4)
-      .style("font-size", "12.5px").text(d.label);
+      .style("font-size", "12.5px")
+      .text(d.label);
   });
 
 
-// ---------------------------- STEP 9: SIZE LEGEND (BOXED) ---------------------------- //
-// Make the box tall enough for the largest radius (no clipping or overlap).
+// Legend for bubble sizes - protein amounts
+
 const sizeBoxY = restBoxY + restBoxH + 22;
 const sizeBoxW = 200;
-
-// compute vertical spacing using rScale to guarantee fit
 const samples = [80, 100, 130, 150];
 const sampleR = samples.map(r => rScale(r));
-const rowGap  = 18;                              // gap between rows
-const blockH  = sampleR[3]*2 + 8;                // height needed for the biggest circle row
+const rowGap  = 18;
+const blockH  = sampleR[3]*2 + 8;
 const sizeBoxH = 22 + (sampleR[0]*2 + rowGap) + (sampleR[1]*2 + rowGap) + (sampleR[2]*2 + rowGap) + blockH;
 
 svg.append("rect")
@@ -231,10 +247,9 @@ svg.append("text")
   .style("font-weight", "800")
   .text("Protein (g)");
 
-// start drawing after the title line
 let cy = sizeBoxY + 42;
 
-samples.forEach((p, i) => {
+samples.forEach(p => {
   const r = rScale(p);
   svg.append("circle")
     .attr("cx", legendX + 26)
@@ -249,6 +264,5 @@ samples.forEach((p, i) => {
     .style("font-size", "13px")
     .text(`${p} g`);
 
-  // add height for this row plus gap to next row
-  cy += r*2 + rowGap;
+  cy += r * 2 + rowGap;
 });
