@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plot 1 — Workout vs Sleep (Protein & Restfulness)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Workout vs Sleep — Protein & Restfulness (AI Recovery View)</h1>
+
+    <p class="hypo">
+      <strong>Hypothesis:</strong>  
+      As <em>workout duration (minutes)</em> increases, heavier compound sessions
+      (e.g., squats or bench press) require more <em>sleep (hours)</em> for recovery.  
+      Greater <em>protein intake (grams)</em> supports higher <em>restfulness (1–5)</em>.
+    </p>
+
+    <svg id="chart" width="900" height="640"></svg>
+    <p class="note">Shape = Workout Type · Size = Protein (g) · Color = Restfulness (1–5)</p>
+
+    <p style="text-align:center;color:#555;font-size:14px;margin-top:12px">
+      <em>AI Insight:</em> Longer, heavier workouts demand longer sleep and greater protein — 
+      a relationship future AI models could learn to predict.
+    </p>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
