@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plot 1 — Workout Duration vs Sleep Hours</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    h3 {
+      color: #7f8c8d;
+      margin-top: 0;
+      font-weight: normal;
+      font-size: 15px;
+    }
+    .hypothesis {
+      background: #f8f9fa;
+      padding: 18px;
+      border-left: 4px solid #27ae60;
+      margin: 20px 0;
+      line-height: 1.7;
+    }
+    .hypothesis strong {
+      color: #27ae60;
+    }
+    .note {
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 13px;
+      margin-top: 15px;
+      font-style: italic;
+    }
+    .explanation {
+      background: #f0f8ff;
+      padding: 20px;
+      border-left: 4px solid #3498db;
+      margin-top: 25px;
+      line-height: 1.7;
+    }
+    .explanation h3 {
+      color: #2c3e50;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+    .tooltip {
+      position: absolute;
+      padding: 12px;
+      background: rgba(44, 62, 80, 0.95);
+      color: white;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Workout Duration vs Sleep Hours: A 12-Day Training Analysis</h1>
+    <h3>Harsh Kumar — Lab #9, Plot 1</h3>
+
+<div class="hypothesis">
+  <strong>Hypothesis:</strong><br><br>
+  As workout duration increases over time, sleep requirements also increase to support recovery.<br><br>
+  Heavier training sessions (especially compound lifts like squats and deadlifts) tend to demand longer sleep compared to lighter workouts. 
+  Protein intake may amplify this relationship, with higher protein supporting better restfulness at any sleep duration. 
+  This visualization uses <strong>Array.sort()</strong> to arrange data chronologically, revealing how my training intensity 
+  and recovery patterns evolved from September 25 through October 6.
+</div>
+
+
+    <svg id="chart"></svg>
+
+    <p class="note">
+      Hover over any bubble to see workout details • Data sorted chronologically to show progression
+    </p>
+
+    <div class="explanation">
+      <h3>Why This Visualization Works</h3>
+      <p>
+        This scatterplot effectively captures my 12-day fitness journey by showing four interconnected 
+        variables: workout duration (X-axis), sleep hours (Y-axis), protein intake (bubble size), and 
+        restfulness (bubble color). The chronological sorting reveals a clear upward trend — as I 
+        progressed from 50-minute moderate workouts to 102-minute heavy lifting sessions, my sleep needs 
+        increased from 6 hours to 8.5 hours. The color gradient (red to green) shows that restfulness 
+        improved alongside this progression, suggesting my body adapted positively to increased training loads.
+      </p>
+      <p>
+        What makes this particularly insightful is the protein dimension. Larger bubbles (higher protein 
+        intake) consistently appear at higher restfulness levels, validating my hypothesis that adequate 
+        protein supports better recovery. By hovering over any point, you can see the specific exercises 
+        performed (bench press weights, squat loads, etc.), directly addressing my professor's feedback 
+        about workout specificity. Without the chronological sorting via Array.sort(), this progression 
+        story would be invisible — just scattered data points rather than a clear fitness trajectory.
+      </p>
+    </div>
+  </div>
+
+  <!--  External script links -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"></script>
+  <script defer src="main.js"></script>
+</body>
+</html>
