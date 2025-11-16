@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualization Sketches - Harsh Kumar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 35px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: headerGlow 8s ease infinite;
+    }
+
+    @keyframes headerGlow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20%, -20%); }
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 8px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.5px;
+    }
+    
+    header p {
+      font-size: 1em;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 4px 0;
+      position: relative;
+      z-index: 1;
+      font-weight: 400;
+    }
+
+    header p strong {
+      font-weight: 600;
+      color: white;
+    }
+
+    .header-subtitle {
+      font-size: 0.95em;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 8px;
+    }
+    
+    .intro-box {
+      background: #16213e;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 5px solid #667eea;
+    }
+    
+    .intro-box h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+    
+    .intro-box p {
+      color: #ccc;
+      margin: 12px 0;
+    }
+    
+    .intro-box ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }
+    
+    .intro-box li {
+      color: #ddd;
+      margin: 10px 0;
+    }
+    
+    .intro-box strong {
+      color: #667eea;
+    }
+    
+    .sketch-card {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 35px;
+      margin-bottom: 35px;
+      border: 2px solid #2a2e45;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .sketch-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+      border-color: #667eea;
+    }
+    
+    .sketch-card h2 {
+      color: #667eea;
+      font-size: 26px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #2a2e45;
+    }
+    
+    .sketch-card h3 {
+      color: #9aa5ff;
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+    
+    .hypothesis-box {
+      background: rgba(102, 126, 234, 0.1);
+      border-left: 4px solid #667eea;
+      padding: 18px;
+      margin: 18px 0;
+      border-radius: 6px;
+      font-style: italic;
+      color: #e0e0e0;
+    }
+    
+    .data-info {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 18px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .data-info p {
+      margin: 10px 0;
+      color: #ccc;
+    }
+    
+    .data-info ul {
+      margin: 12px 0;
+      padding-left: 25px;
+    }
+    
+    .data-info li {
+      color: #ddd;
+      margin: 8px 0;
+    }
+    
+    .pdf-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .pdf-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+    }
+    
+    .citations {
+      background: #16213e;
+      padding: 35px;
+      border-radius: 12px;
+      margin-top: 40px;
+      border-left: 5px solid #4caf50;
+    }
+    
+    .citations h2 {
+      color: #4caf50;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    
+    .citations p {
+      color: #ccc;
+      margin: 18px 0;
+    }
+    
+    .citations strong {
+      color: #81c784;
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      border-top: 2px solid #2a2e45;
+      color: #888;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 25px 15px;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      header p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>📊 Fitness Data Visualization Sketches</h1>
+      <p><strong>Harsh Kumar</strong> </p>
+      <p class="header-subtitle"> Phase 3b Term Project (Final)</p>
+    </header>
+
+    <div class="intro-box">
+      <h2>About This Project</h2>
+      <p>
+        I tracked my daily fitness and wellness habits over 12 consecutive days from <strong>September 25 to October 6, 2025</strong>. The goal was to explore potential relationships between physical activity, nutrition, sleep quality, and overall restfulness.
+      </p>
+      
+      <h3 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">Data Collected:</h3>
+      <ul>
+        <li><strong>Workout Duration:</strong> Minutes spent exercising (0-102 min)</li>
+        <li><strong>Sleep Hours:</strong> Total sleep per night (6.0-8.5 hrs)</li>
+        <li><strong>Protein Intake:</strong> Daily protein consumption (110-150g)</li>
+        <li><strong>Restfulness:</strong> Sleep quality rating 1-5 scale</li>
+      </ul>
+      
+      <p style="margin-top: 20px;">
+        Below are three different visualization proposals exploring these metrics from different analytical perspectives.
+      </p>
+    </div>
+
+    <!-- SKETCH 1 -->
+    <div class="sketch-card">
+      <h2>Sketch 1: Protein Intake vs Sleep Quality</h2>
+      
+      <h3>Hypothesis</h3>
+      <div class="hypothesis-box">
+        As protein intake (grams) increases, sleep hours (hours) also increase, suggesting that better nutrition supports longer sleep duration. Higher workout duration (minutes) is associated with better sleep quality, shown through bubble size—longer, more intense workouts appear to promote deeper rest. Restfulness levels (1-5 scale) are indicated by color from red (very tired) to dark green (excellent rest), allowing quick visual identification of peak recovery days.
+      </div>
+      
+      <h3>Data Elements</h3>
+      <div class="data-info">
+        <ul>
+          <li><strong>X-axis:</strong> Protein Intake (grams) • Range: 110-150g</li>
+          <li><strong>Y-axis:</strong> Sleep Hours (hours) • Range: 6.0-8.5 hrs</li>
+          <li><strong>Bubble Size:</strong> Workout Duration (minutes) • Range: 0-102 min</li>
+          <li><strong>Bubble Color:</strong> Restfulness (1-5 scale) • Red to Dark Green</li>
+        </ul>
+      </div>
+      
+      <h3>Visual Representation</h3>
+      <div class="data-info">
+        <p>
+          This scatterplot places each day as a bubble at coordinates determined by protein intake (horizontal) and sleep hours (vertical). Bubble size encodes workout duration using proportional scaling—larger bubbles represent longer workouts, with area (not diameter) proportional to duration following the proportional ink principle. The color gradient from red through yellow to dark green represents restfulness levels, making it easy to identify which days I felt most rested.
+        </p>
+      </div>
+      
+      <a href="sketch1.pdf" class="pdf-button">📄 View Sketch 1</a>
+    </div>
+
+    <!-- SKETCH 2 -->
+    <div class="sketch-card">
+      <h2>Sketch 2: Multi-Line Progress Chart</h2>
+      
+      <h3>Research Question</h3>
+      <div class="hypothesis-box">
+        How do workout duration, sleep hours, and protein intake change together over the 12-day period? This visualization shows the temporal progression of all three fitness metrics to identify whether they improve in coordination or independently.
+      </div>
+      
+      <h3>Data Elements</h3>
+      <div class="data-info">
+        <ul>
+          <li><strong>X-axis:</strong> Day Number (1–12) • Sept 25 to Oct 6</li>
+          <li><strong>Y-axis:</strong> Normalized Value (0-10 scale)</li>
+          <li><strong>Blue Line:</strong> Workout Duration • Range: 0–102 minutes (normalized as 0–8.5)</li>
+          <li><strong>Green Line:</strong> Sleep Hours • Range: 6.0–8.5 hours (actual values)</li>
+          <li><strong>Red Line:</strong> Protein Intake • Range: 110–150 grams (normalized as approx 7.3–10.0)</li>
+        </ul>
+      </div>
+      
+      <h3>Visual Representation</h3>
+      <div class="data-info">
+        <p>
+          This multi-line time series chart displays all three metrics on a shared timeline, normalized to a 0-10 scale for easy comparison. Each metric is represented by a different colored line with data points marking daily values. Vertical grid lines help track specific days. The visualization makes it easy to see whether the three metrics move together or independently over time, revealing patterns of coordinated improvement or individual fluctuation.
+        </p>
+      </div>
+      
+      <a href="sketch2.pdf" class="pdf-button">📄 View Sketch 2</a>
+    </div>
+
+    <!-- SKETCH 3 -->
+    <div class="sketch-card">
+      <h2>Sketch 3: Battery Energy Dashboard</h2>
+      
+      <h3>Creative Research Question</h3>
+      <div class="hypothesis-box">
+        How do all four fitness metrics improve over 12 days, and what does optimal daily fitness "energy" look like? This creative visualization uses the battery metaphor to show daily "energy levels" across multiple dimensions.
+      </div>
+      
+      <h3>Data Elements (All Four Metrics!)</h3>
+      <div class="data-info">
+        <ul>
+          <li><strong>Battery Width:</strong> Protein Intake (grams) • Thin (110g) to Wide (150g)</li>
+          <li><strong>Fill Level:</strong> Sleep Hours (%) • 60% (6.0 hrs) to 85% (8.5 hrs)</li>
+          <li><strong>Blue Dots:</strong> Workout Duration (minutes) • 0 dots (rest day) to 5 dots (102 min)</li>
+          <li><strong>Fill Color:</strong> Restfulness (1-5) • Red (tired) to Dark Green (excellent)</li>
+        </ul>
+      </div>
+      
+      <h3>Visual Representation</h3>
+      <div class="data-info">
+        <p>
+          This creative visualization uses battery icons as a metaphor for "charging up" fitness levels, inspired by the Dear Data project's approach to representing personal data through familiar, everyday objects. Each of the 12 batteries represents one day, with four visual dimensions encoding different metrics simultaneously. Width increases with protein intake, fill level represents sleep as a percentage of maximum, blue dots above show workout duration (more dots = longer workouts, no dots = rest day), and the fill color indicates restfulness level. The progression from Day 1 to Day 12 clearly shows improvement across all four metrics, with the final "peak" day demonstrating optimal fitness energy: wide battery (high protein), nearly full (excellent sleep), multiple dots (intense workout), and dark green color (maximum restfulness).
+        </p>
+      </div>
+      
+      <a href="sketch3.pdf" class="pdf-button">📄 View Sketch 3</a>
+    </div>
+
+    <!-- CITATIONS -->
+  <div class="citations">
+  <h2>Design Resources and How I Used Them</h2>
+  
+  <strong>Dear Data</strong> by Giorgia Lupi and Stefanie Posavec (http://www.dear-data.com/theproject)
+  <p>This project helped me think about creative ways to visualize personal data in Sketch 3. Specifically, I was inspired by how they use everyday objects and metaphors to represent data—like using weather symbols for emotions. This gave me the idea to use battery icons as a metaphor for "charging up" my fitness levels over 12 days, with each battery showing all four metrics simultaneously (width for protein, fill level for sleep, dots for workout duration, and color for restfulness). Without this resource, I probably would have created a standard chart instead of the creative battery visualization.</p>
+  
+  <strong>Data Visualisation Catalogue</strong> (https://datavizcatalogue.com/index.html)
+  <p>I used the "Search By Function" page to find visualization types that work for comparing multiple variables over time. This helped me decide on a multi-line chart for Sketch 2 because the catalogue explained that line charts are good for showing trends and patterns when you have multiple data series sharing the same time-based axis. This confirmed that putting all three metrics on one chart would make it easier to see if they move together or separately over the 12-day period.</p>
+  
+  <strong>Observable D3 Gallery</strong> (https://observablehq.com/@d3/gallery)
+  <p>I looked at bubble chart examples to understand how to encode multiple dimensions in a scatterplot for Sketch 1. Specifically, I learned that using different bubble sizes requires careful scaling—the examples showed me that bubble area (not diameter) should be proportional to the data value. I also learned from these examples that using some transparency on bubbles helps when they overlap, which is why I made note of that in my sketch design.</p>
+  
+  <strong>Class lecture on proportional ink and data visualization principles</strong>
+  <p>The lecture's discussion of the "rule of proportional ink" directly influenced how I designed bubble sizes in Sketch 1 and fill percentages in Sketch 3. This rule says that the amount of ink (or color) should be proportional to the data value it represents. For the battery visualization, this meant using proportional fill percentage (like 71% for 6.0 hours representing 71% of the maximum 8.5 hours) rather than arbitrary heights, ensuring an accurate visual representation.</p>
+  
+  <strong>From Data to Viz</strong> (https://www.data-to-viz.com/)
+  <p>I used the decision tree tool on this website to verify my visualization type choices. Starting from "two numerical variables" led me to confirm that scatterplots work well for Sketch 1's protein-sleep relationship. For Sketch 2, I followed the path for "one categorical (time) and several numerical variables" which confirmed that multi-line charts are appropriate for showing multiple metrics over the same time period.</p>
+</div>
+
+    <footer>
+      <p>All visualizations are original hand-drawn sketches created for this assignment.</p>
+      <p style="margin-top: 10px;">Northeastern University • Data Visualization • 2025</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
