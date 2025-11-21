@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simple nutrition guidance for fat loss, muscle building, and balanced eating - No complicated meal plans" />
+    <title>Nutrition - Fitness Motivation+</title>
+
+    <!-- GLOBAL MASTER STYLESHEET -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="nutrition-page">
+
+    <!-- ========================================
+         NAVIGATION (Shared on all website pages)
+         * No inline JS
+         * Mobile menu handled in main.js
+    ========================================= -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                Fitness Motivation+
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="motivation.html">Motivation</a></li>
+                <li><a href="nutrition.html" class="active">Nutrition</a></li>
+                <li><a href="billing.html">Pricing</a></li>
+                <li><a href="signup.html" class="btn-join">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         * Same hero structure as other pages
+    ========================================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Simple Nutrition That Works</h1>
+            <p>
+                No complicated meal plans or banned foods. Get straightforward nutrition
+                guidance tailored to your fitness goal with protein targets, portion
+                control, and sustainable eating habits.
+            </p>
+            <a href="billing.html" class="btn btn-primary">View Nutrition Plans</a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         NUTRITION FOR YOUR GOAL
+         * 3 Card Grid
+    ========================================= -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Nutrition For Your Goal</h2>
+            <p class="section-subtitle">
+                Choose the nutrition approach that matches your fitness objective.
+                Each plan fuels your workouts and supports results.
+            </p>
+        </div>
+
+        <div class="grid-3">
+
+            <!-- FAT LOSS CARD -->
+            <div class="nutrition-card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&amp;q=80"
+                     alt="Healthy Fat Loss Salad Bowl" class="nutrition-image" />
+
+                <div class="nutrition-content">
+                    <h3>Fat Loss Nutrition</h3>
+                    <p class="description">
+                        Moderate calorie deficit with high protein to preserve muscle while losing fat.
+                    </p>
+
+                    <div class="macro-grid">
+                        <div class="macro-item"><div class="macro-value">40%</div><div class="macro-label">Protein</div></div>
+                        <div class="macro-item"><div class="macro-value">30%</div><div class="macro-label">Carbs</div></div>
+                        <div class="macro-item"><div class="macro-value">30%</div><div class="macro-label">Fats</div></div>
+                    </div>
+
+                    <a href="billing.html" class="btn btn-primary">Get Plan</a>
+                </div>
+            </div>
+
+            <!-- MUSCLE BUILDING CARD -->
+            <div class="nutrition-card">
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&amp;q=80"
+                     alt="Muscle Building Meal Prep" class="nutrition-image" />
+
+                <div class="nutrition-content">
+                    <h3>Muscle Building</h3>
+                    <p class="description">
+                        Calorie surplus with optimal protein and carbs to support muscle growth and recovery.
+                    </p>
+
+                    <div class="macro-grid">
+                        <div class="macro-item"><div class="macro-value">35%</div><div class="macro-label">Protein</div></div>
+                        <div class="macro-item"><div class="macro-value">45%</div><div class="macro-label">Carbs</div></div>
+                        <div class="macro-item"><div class="macro-value">20%</div><div class="macro-label">Fats</div></div>
+                    </div>
+
+                    <a href="billing.html" class="btn btn-primary">Get Plan</a>
+                </div>
+            </div>
+
+            <!-- BALANCED NUTRITION CARD -->
+            <div class="nutrition-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&amp;q=80"
+                     alt="Balanced Healthy Meal" class="nutrition-image" />
+
+                <div class="nutrition-content">
+                    <h3>Balanced Nutrition</h3>
+                    <p class="description">
+                        Maintain weight and energy with balanced macros for sustainable, healthy eating.
+                    </p>
+
+                    <div class="macro-grid">
+                        <div class="macro-item"><div class="macro-value">30%</div><div class="macro-label">Protein</div></div>
+                        <div class="macro-item"><div class="macro-value">40%</div><div class="macro-label">Carbs</div></div>
+                        <div class="macro-item"><div class="macro-value">30%</div><div class="macro-label">Fats</div></div>
+                    </div>
+
+                    <a href="billing.html" class="btn btn-primary">Get Plan</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         NUTRITION PRINCIPLES
+    ========================================= -->
+    <section class="section section-alt">
+        <div class="section-header">
+            <h2 class="section-title">Our Nutrition Principles</h2>
+            <p class="section-subtitle">
+                Simple, sustainable habits that work.  
+                No fad diets or banned foods — just smart strategies.
+            </p>
+        </div>
+
+        <div class="grid-3">
+
+            <div class="principle-card">
+                <div class="principle-number">01</div>
+                <h3>Protein First</h3>
+                <p>
+                    Hit your daily protein target (0.8–1g per lb bodyweight) to stay full, preserve muscle, and recover better.
+                </p>
+            </div>
+
+            <div class="principle-card">
+                <div class="principle-number">02</div>
+                <h3>Portion Control</h3>
+                <p>
+                    Use simple hand-size portions — no calorie counting needed. Adjust portions based on your goals.
+                </p>
+            </div>
+
+            <div class="principle-card">
+                <div class="principle-number">03</div>
+                <h3>Flexible Foods</h3>
+                <p>
+                    No banned foods. Build meals you enjoy while hitting your nutrition targets.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         SAMPLE MEAL IDEAS
+    ========================================= -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Sample Meal Ideas</h2>
+            <p class="section-subtitle">
+                Practical meals for a busy lifestyle.  
+                Mix and match to stay consistent.
+            </p>
+        </div>
+
+        <div class="grid-3">
+
+            <!-- BREAKFAST -->
+            <div class="meal-card">
+                <div class="meal-header"><h4>Breakfast Options</h4></div>
+                <ul>
+                    <li>Greek yogurt with berries and granola</li>
+                    <li>Eggs with whole grain toast & avocado</li>
+                    <li>Protein oats with banana & almond butter</li>
+                    <li>Smoothie bowl with protein powder</li>
+                </ul>
+            </div>
+
+            <!-- LUNCH -->
+            <div class="meal-card">
+                <div class="meal-header"><h4>Lunch Options</h4></div>
+                <ul>
+                    <li>Grilled chicken with quinoa & vegetables</li>
+                    <li>Turkey wrap with hummus & veggies</li>
+                    <li>Salmon salad with mixed greens</li>
+                    <li>Burrito bowl with lean beef & rice</li>
+                </ul>
+            </div>
+
+            <!-- DINNER -->
+            <div class="meal-card">
+                <div class="meal-header"><h4>Dinner Options</h4></div>
+                <ul>
+                    <li>Lean steak with sweet potato & broccoli</li>
+                    <li>Baked fish with brown rice & asparagus</li>
+                    <li>Chicken stir-fry with mixed vegetables</li>
+                    <li>Turkey meatballs with pasta & marinara</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA
+    ========================================= -->
+    <section class="cta-final">
+        <h2>Get Your Personalized Nutrition Plan</h2>
+        <p>
+            Stop guessing what to eat.  
+            Get a clear, simple nutrition plan tailored to your goal.
+        </p>
+        <a href="billing.html" class="btn btn-primary">View All Packages</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Harsh Kumar | Fitness Motivation+ Website | DGM6501 Web Creation Boot Camp</p>
+    </footer>
+
+    <!-- CHATBOT -->
+    <div class="chatbot" onclick="window.location.href='contact.html'"></div>
+
+    <!-- GLOBAL JAVASCRIPT -->
+    <script src="main.js"></script>
+
+</body>
+</html>

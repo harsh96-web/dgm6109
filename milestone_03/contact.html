@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get in touch with Fitness Motivation+ — We're here to help with any questions." />
+    <title>Contact - Fitness Motivation+</title>
+
+    <!-- MASTER STYLESHEET -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="contact-page">
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <div class="logo" onclick="window.location.href='index.html'">
+                Fitness Motivation+
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="motivation.html">Motivation</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="billing.html">Pricing</a></li>
+                <li><a href="signup.html" class="btn-join">Join Us</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- CONTACT MAIN CONTENT -->
+    <div class="contact-content">
+
+        <!-- Page Header -->
+        <div class="section-header">
+            <h1 class="section-title">Get In Touch</h1>
+            <p class="section-subtitle">
+                Have questions? Need help choosing a plan? Our team is here to support you every step of the way.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <!-- CONTACT INFO BOXES -->
+            <div class="contact-info">
+
+                <div class="info-card">
+                    <h3>Email Us</h3>
+                    <p>support@fitnessmotivation.com</p>
+                    <p class="info-small">We respond within 24 hours</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Call Us</h3>
+                    <p>1-800-FIT-PLUS</p>
+                    <p class="info-small">Mon–Fri, 9am–6pm PST</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Live Chat</h3>
+                    <p>Click the chat button in the bottom right for instant support.</p>
+                </div>
+
+            </div>
+
+            <!-- CONTACT FORM -->
+           <div class="contact-form">
+
+
+                <!-- FORM (all JS handled in main.js) -->
+                <form id="contactForm">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" required placeholder="Your name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" required placeholder="your@email.com" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="plans">Questions about plans</option>
+                            <option value="technical">Technical support</option>
+                            <option value="billing">Billing inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© Designed by Harsh Kumar | Fitness Motivation+ Website |</p>
+    </footer>
+
+    <!-- CHATBOT BUTTON -->
+    <div class="chatbot" onclick="window.location.href='contact.html'"></div>
+
+    <!-- GLOBAL JS FILE -->
+    <script src="main.js"></script>
+
+</body>
+</html>
