@@ -1,0 +1,272 @@
+[
+  {
+    "day": 1,
+    "date": "2025-09-25",
+    "duration": 0,
+    "sleep": 7,
+    "protein": 115,
+    "restfulness": 4,
+    "notes": "University day — no workout."
+  },
+  {
+    "day": 2,
+    "date": "2025-09-26",
+    "duration": 70,
+    "sleep": 7,
+    "protein": 125,
+    "restfulness": 4,
+    "notes": "Better focus, slept well."
+  },
+  {
+    "day": 3,
+    "date": "2025-09-27",
+    "duration": 80,
+    "sleep": 7.6,
+    "protein": 130,
+    "restfulness": 4,
+    "notes": "Strong day, deep relaxation."
+  },
+  {
+    "day": 4,
+    "date": "2025-09-28",
+    "duration": 50,
+    "sleep": 6.3,
+    "protein": 115,
+    "restfulness": 3,
+    "notes": "Light workout, restless sleep."
+  },
+  {
+    "day": 5,
+    "date": "2025-09-29",
+    "duration": 90,
+    "sleep": 8.1,
+    "protein": 140,
+    "restfulness": 5,
+    "notes": "Long session, refreshed in morning."
+  },
+  {
+    "day": 6,
+    "date": "2025-09-30",
+    "duration": 0,
+    "sleep": 6.9,
+    "protein": 110,
+    "restfulness": 3,
+    "notes": "University day — tired evening."
+  },
+  {
+    "day": 7,
+    "date": "2025-10-01",
+    "duration": 0,
+    "sleep": 7.2,
+    "protein": 112,
+    "restfulness": 4,
+    "notes": "Rest day; mentally tired from school."
+  },
+  {
+    "day": 8,
+    "date": "2025-10-02",
+    "duration": 85,
+    "sleep": 7.9,
+    "protein": 138,
+    "restfulness": 4,
+    "notes": "Solid effort and sleep."
+  },
+  {
+    "day": 9,
+    "date": "2025-10-03",
+    "duration": 55,
+    "sleep": 6.4,
+    "protein": 118,
+    "restfulness": 3,
+    "notes": "Slight soreness, woke up twice."
+  },
+  {
+    "day": 10,
+    "date": "2025-10-04",
+    "duration": 95,
+    "sleep": 8.3,
+    "protein": 148,
+    "restfulness": 5,
+    "notes": "Peak performance day."
+  },
+  {
+    "day": 11,
+    "date": "2025-10-05",
+    "duration": 70,
+    "sleep": 7.2,
+    "protein": 130,
+    "restfulness": 4,
+    "notes": "Kept a good balance."
+  },
+  {
+    "day": 12,
+    "date": "2025-10-06",
+    "duration": 100,
+    "sleep": 8.5,
+    "protein": 150,
+    "restfulness": 5,
+    "notes": "Very strong session, best recovery."
+  },
+  {
+    "day": 13,
+    "date": "2025-10-07",
+    "duration": 0,
+    "sleep": 7,
+    "protein": 115,
+    "restfulness": 3,
+    "notes": "University day — mild fatigue."
+  },
+  {
+    "day": 14,
+    "date": "2025-10-08",
+    "duration": 0,
+    "sleep": 7.4,
+    "protein": 117,
+    "restfulness": 4,
+    "notes": "Rest day; recharged well."
+  },
+  {
+    "day": 15,
+    "date": "2025-10-09",
+    "duration": 85,
+    "sleep": 7.9,
+    "protein": 138,
+    "restfulness": 4,
+    "notes": "Felt strong and recovered well."
+  },
+  {
+    "day": 16,
+    "date": "2025-10-10",
+    "duration": 95,
+    "sleep": 8.4,
+    "protein": 146,
+    "restfulness": 5,
+    "notes": "Amazing sleep after heavy day."
+  },
+  {
+    "day": 17,
+    "date": "2025-10-11",
+    "duration": 65,
+    "sleep": 7,
+    "protein": 126,
+    "restfulness": 4,
+    "notes": "Consistent rhythm and decent rest."
+  },
+  {
+    "day": 18,
+    "date": "2025-10-12",
+    "duration": 80,
+    "sleep": 7.8,
+    "protein": 134,
+    "restfulness": 4,
+    "notes": "Smooth training, easy recovery."
+  },
+  {
+    "day": 19,
+    "date": "2025-10-13",
+    "duration": 50,
+    "sleep": 6.2,
+    "protein": 112,
+    "restfulness": 3,
+    "notes": "Light effort, restless sleep."
+  },
+  {
+    "day": 20,
+    "date": "2025-10-14",
+    "duration": 90,
+    "sleep": 8.2,
+    "protein": 144,
+    "restfulness": 5,
+    "notes": "Great end of training cycle."
+  },
+  {
+    "day": 21,
+    "date": "2025-10-15",
+    "duration": 60,
+    "sleep": 7.1,
+    "protein": 128,
+    "restfulness": 4,
+    "notes": "Moderate training, good balance."
+  },
+  {
+    "day": 22,
+    "date": "2025-10-16",
+    "duration": 0,
+    "sleep": 7.3,
+    "protein": 116,
+    "restfulness": 3,
+    "notes": "Rest / university day."
+  },
+  {
+    "day": 23,
+    "date": "2025-10-17",
+    "duration": 82,
+    "sleep": 7.9,
+    "protein": 140,
+    "restfulness": 4,
+    "notes": "Solid compound session."
+  },
+  {
+    "day": 24,
+    "date": "2025-10-18",
+    "duration": 92,
+    "sleep": 8.1,
+    "protein": 145,
+    "restfulness": 5,
+    "notes": "Slept deeply and woke up energized."
+  },
+  {
+    "day": 25,
+    "date": "2025-10-19",
+    "duration": 40,
+    "sleep": 6.6,
+    "protein": 118,
+    "restfulness": 3,
+    "notes": "Short workout, restless night."
+  },
+  {
+    "day": 26,
+    "date": "2025-10-20",
+    "duration": 75,
+    "sleep": 6.8,
+    "protein": 121,
+    "restfulness": 3,
+    "notes": "Felt under-recovered."
+  },
+  {
+    "day": 27,
+    "date": "2025-10-21",
+    "duration": 88,
+    "sleep": 8.0,
+    "protein": 139,
+    "restfulness": 4,
+    "notes": "Good energy through the day."
+  },
+  {
+    "day": 28,
+    "date": "2025-10-22",
+    "duration": 95,
+    "sleep": 8.3,
+    "protein": 147,
+    "restfulness": 5,
+    "notes": "Another peak day."
+  },
+  {
+    "day": 29,
+    "date": "2025-10-23",
+    "duration": 55,
+    "sleep": 7.2,
+    "protein": 128,
+    "restfulness": 4,
+    "notes": "Moderate training, good mood."
+  },
+  {
+    "day": 30,
+    "date": "2025-10-24",
+    "duration": 0,
+    "sleep": 7.0,
+    "protein": 120,
+    "restfulness": 4,
+    "notes": "Final rest day in the cycle."
+  }
+]
