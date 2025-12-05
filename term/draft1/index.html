@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Energy Dashboard – Harsh Kumar</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Fitness Energy Dashboard</h1>
+        <p class="subtitle">30-Day Personal Fitness Tracking • Sept 25 – Oct 24, 2025</p>
+        <p class="author">Harsh Kumar • DGM6109 Data Visualization • Draft 1</p>
+    </div>
+
+    <!-- VISUALIZATION -->
+    <div class="viz-wrapper">
+        <svg id="batteryViz" width="1600" height="1600"></svg>
+    </div>
+
+    <!-- HYPOTHESIS (TWO FACTORS ONLY) -->
+    <section class="hypothesis-section">
+        <h2>🎯 Research Hypothesis</h2>
+        <div class="hypothesis-box">
+            <p class="main-hypothesis">As protein intake increases, sleep hours also increase.</p>
+        </div>
+
+        <p class="hypothesis-explanation">
+            This Draft 1 tests the relationship between <strong>two variables only</strong>: daily protein
+            intake (in grams) and nightly sleep duration (in hours). Over a continuous 30-day period,
+            I recorded both metrics to evaluate whether higher nutritional intake corresponds with longer
+            overnight recovery time. This satisfies the rubric requirement of analyzing exactly two factors.
+        </p>
+    </section>
+
+    <!-- ADDITIONAL DIMENSIONS -->
+    <section class="dimensions-section">
+        <h2>📊 Additional Data Dimensions in the Visualization</h2>
+
+        <p class="intro-text">
+            Although the hypothesis compares two variables, the visualization also includes
+            <strong>two additional dimensions</strong> to provide meaningful context. These extra
+            dimensions are <em>not</em> part of the hypothesis but help explain differences between
+            high-performance days and low-performance days.
+        </p>
+
+        <!-- WORKOUT DURATION -->
+        <div class="dimension-card">
+            <h3>🔵 Workout Duration (Blue Text Label)</h3>
+            <p>
+                Workout duration (0–100 minutes) is encoded as a blue label above each battery, such as
+                <strong>"45 min"</strong> or <strong>"0 min"</strong>. This keeps the overall battery design
+                clean while still making daily activity levels easy to compare.
+            </p>
+            <p>
+                <strong>Connection to the hypothesis:</strong> Many days showing both high protein intake and
+                long sleep hours also include longer workouts. This suggests that exercise intensity may influence
+                how strongly the protein–sleep relationship appears on certain days.
+            </p>
+        </div>
+
+        <!-- RESTFULNESS COLOR SCALE -->
+        <div class="dimension-card">
+            <h3>🌈 Restfulness Quality (Color Scale)</h3>
+            <p>
+                Battery color represents self-rated restfulness on a scale from 3 to 5. Red indicates low
+                restfulness, yellow indicates moderate recovery, and green indicates excellent recovery.
+                This adds a qualitative measure of sleep quality on top of sleep duration.
+            </p>
+            <p>
+                <strong>Connection to the hypothesis:</strong> Restfulness explains situations where sleep
+                hours are high but recovery is low, or where both sleep and restfulness improve on days with
+                higher nutritional intake and more intense physical training.
+            </p>
+        </div>
+    </section>
+
+    <!-- DATA COLLECTION -->
+    <section class="data-section">
+        <h2>📈 Data Collection Process</h2>
+        <p>
+            I collected data every morning for 30 consecutive days. Each entry includes workout duration,
+            sleep hours, protein intake, and restfulness rating. All recordings were made using consistent
+            methods to ensure reliability.
+        </p>
+
+        <div class="data-grid">
+            <div class="data-item">
+                <h4>💪 Workout Duration</h4>
+                <p><strong>Range:</strong> 0–100 minutes</p>
+                <p><strong>Method:</strong> Stopwatch / phone timer</p>
+            </div>
+
+            <div class="data-item">
+                <h4>😴 Sleep Hours</h4>
+                <p><strong>Range:</strong> 6.2–8.5 hours</p>
+                <p><strong>Method:</strong> Sleep tracking app</p>
+            </div>
+
+            <div class="data-item">
+                <h4>🍗 Protein Intake</h4>
+                <p><strong>Range:</strong> 110–150 grams</p>
+                <p><strong>Method:</strong> Nutrition log</p>
+            </div>
+
+            <div class="data-item">
+                <h4>⭐ Restfulness</h4>
+                <p><strong>Range:</strong> 3–5</p>
+                <p><strong>Method:</strong> Self-rating each morning</p>
+            </div>
+        </div>
+
+        <p class="data-summary">
+            This dataset includes all 30 days with no missing values, capturing a realistic pattern
+            across training days, rest days, and busy university days.
+        </p>
+    </section>
+
+    <!-- OBSERVATIONS AND CONCLUSIONS -->
+    <section class="conclusion-section">
+        <h2>🔍 Observations and Conclusions</h2>
+
+        <div class="observation-card highlight">
+            <h3>Observation 1 – High Protein Aligns with High Sleep</h3>
+            <p>
+                Days with protein intake above 140g consistently show sleep hours above 8.0 hours.
+                These days also tend to include longer workouts and greener restfulness scores,
+                suggesting a positive relationship between exercise, nutrition, and sleep.
+            </p>
+        </div>
+
+        <div class="observation-card">
+            <h3>Observation 2 – Low Workout Days Show Lower Recovery</h3>
+            <p>
+                Rest days (<strong>0 min workouts</strong>) generally show narrower batteries, lower
+                sleep duration, and more yellowish restfulness colors. Even when sleep hours remain
+                reasonable, subjective recovery tends to be lower.
+            </p>
+        </div>
+
+        <div class="observation-card">
+            <h3>Observation 3 – Middle-Week Low-Recovery Cluster</h3>
+            <p>
+                Several days (e.g., Days 4, 9, 13, 19) show lower fill level, moderate restfulness,
+                and shorter workouts. These represent the lowest recovery states in the dataset.
+            </p>
+        </div>
+
+        <div class="conclusion-box">
+            <h3>🎯 Final Conclusion</h3>
+            <p>
+                Draft 1 supports the hypothesis: higher protein intake generally aligns with longer sleep
+                hours. However, the additional variables reveal that this relationship is influenced by
+                workout intensity and subjective restfulness. Instead of a simple two-factor connection,
+                the visualization points to a multi-factor wellbeing pattern involving training, nutrition,
+                sleep duration, and recovery quality.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<script src="d3.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
