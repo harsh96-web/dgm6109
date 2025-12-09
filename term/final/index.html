@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Energy Dashboard – Harsh Kumar</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Fitness Energy Dashboard</h1>
+        <p class="subtitle">30-Day Personal Fitness Tracking • Sept 25 – Oct 24, 2025</p>
+        <p class="author">Harsh Kumar • Final</p>
+    </div>
+
+    <!-- VISUALIZATION -->
+    <div class="viz-wrapper">
+        <svg id="batteryViz" width="1600" height="1600"></svg>
+    </div>
+
+    <!-- HYPOTHESIS -->
+    <section class="hypothesis-section">
+        <h2>🎯 Research Hypothesis</h2>
+
+        <div class="hypothesis-box">
+            <p class="main-hypothesis">
+                As protein intake increases, sleep hours also increase.
+            </p>
+        </div>
+
+        <p class="hypothesis-explanation">
+            For this project, I focused on two main factors: <strong>daily protein intake</strong> and
+            <strong>sleep duration</strong>. These two variables form the core of the hypothesis.
+            I tracked both consistently over 30 days to see whether higher nutritional intake aligns
+            with better overnight recovery, measured through longer sleep.
+        </p>
+    </section>
+
+    <!-- ADDITIONAL DIMENSIONS -->
+    <section class="dimensions-section">
+        <h2>📊 Additional Dimensions Included</h2>
+
+        <p class="intro-text">
+            Beyond the two main variables, this visualization also uses two supporting dimensions:
+            <strong>workout duration</strong> and <strong>restfulness</strong>. These help explain
+            why certain days behave differently, even when protein and sleep levels appear similar.
+        </p>
+
+        <!-- WORKOUT -->
+        <div class="dimension-card">
+            <h3>🔵 Workout Duration (Minutes)</h3>
+            <p>
+                Each battery displays workout time as a blue label (e.g., <strong>“45 min”</strong>).
+                This shows how training intensity interacts with protein and sleep patterns.
+            </p>
+            <p>
+                Often, the days with both high protein and long sleep also include longer workouts,
+                suggesting these three behaviors reinforce each other.
+            </p>
+        </div>
+
+        <!-- RESTFULNESS -->
+        <div class="dimension-card">
+            <h3>🌈 Restfulness (1–5 Color Scale)</h3>
+            <p>
+                Battery fill color represents recovery quality—ranging from tired (red) to excellent (green).
+                This adds a meaningful layer of insight by showing not just how long I slept,
+                but how restorative that sleep actually felt.
+            </p>
+            <p>
+                Days with green restfulness typically show consistent protein, balanced workouts,
+                and enough sleep to support full recovery.
+            </p>
+        </div>
+    </section>
+
+    <!-- DATA COLLECTION -->
+    <section class="data-section">
+        <h2>📈 Data Collection Process</h2>
+
+        <p>
+            Data was collected for 30 consecutive days using the same routine each morning.
+            All values were self-tracked and kept consistent to ensure accuracy.
+        </p>
+
+        <div class="data-grid">
+            <div class="data-item">
+                <h4>💪 Workout Duration</h4>
+                <p><strong>Range:</strong> 0–100 minutes</p>
+            </div>
+
+            <div class="data-item">
+                <h4>😴 Sleep Hours</h4>
+                <p><strong>Range:</strong> 6.2–8.5 hours</p>
+            </div>
+
+            <div class="data-item">
+                <h4>🍗 Protein Intake</h4>
+                <p><strong>Range:</strong> 110–150 grams</p>
+            </div>
+
+            <div class="data-item">
+                <h4>⭐ Restfulness</h4>
+                <p><strong>Range:</strong> 3–5</p>
+            </div>
+        </div>
+
+        <p class="data-summary">
+            The full dataset contains all 30 days without missing values,
+            covering heavy training days, moderate days, and full rest days.
+        </p>
+    </section>
+
+    <!-- OBSERVATIONS FOR DRAFT 2 -->
+    <section class="conclusion-section">
+        <h2>🔍 Observations & Insights (Draft 2)</h2>
+
+        <div class="observation-card highlight">
+            <h3>Observation 1 – Higher Protein Often Aligns with Higher Sleep</h3>
+            <p>
+                Many days with protein intake above 140g show longer sleep durations (7.8h+).
+                These often appear in green recovery zones, reinforcing the hypothesis.
+            </p>
+        </div>
+
+        <div class="observation-card">
+            <h3>Observation 2 – Low Recovery Days Highlight Other Factors</h3>
+            <p>
+                Red-outlined batteries reveal days with poor restfulness.
+                Even when protein was high, these days show that recovery can still be low
+                due to long workouts or inconsistent sleep.
+            </p>
+        </div>
+
+        <div class="observation-card">
+            <h3>Observation 3 – Workout Intensity Influences Sleep</h3>
+            <p>
+                Some of the strongest relationships appear when protein intake,
+                sleep duration, and workout duration all align—suggesting the connection
+                is multi-factor rather than strictly two-factor.
+            </p>
+        </div>
+
+        <div class="conclusion-box">
+            <h3>🎯 Final Conclusion</h3>
+            <p>
+                Draft 2 supports the hypothesis but also shows that protein and sleep do
+                not work in isolation. Workout intensity and recovery quality significantly
+                influence how these two variables interact. Overall, the visualization
+                suggests a broader pattern of balanced training, nutrition, and sleep.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<script src="d3.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
