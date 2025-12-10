@@ -3,7 +3,16 @@
 /*
  * FITNESS ENERGY DASHBOARD — BATTERY VISUALIZATION
  * Harsh Kumar
- * Term Project – final
+ * Term Project – Final
+ */
+
+/*
+ * SOURCES & CITATIONS:
+ * - D3.js library (v5.12) provided by course instructor Jay Taylor-Laird
+ * - Battery visualization concept: Original design by Harsh Kumar
+ * - Grid positioning algorithm: Original implementation by Harsh Kumar
+ * - Scale calculations: Adapted from DGM 6109 course examples (Jay Taylor-Laird)
+ * - No other external code used
  */
 
 // ================================
@@ -21,13 +30,12 @@ let BATTERY_HEIGHT = 100;
 
 let BATTERIES_PER_ROW = 9;
 let ROW_VERTICAL_SPACING = 260; 
-// TO ADJUST VERTICAL SPACING
 
 // ================================
 // GLOBAL VARIABLES
 // ================================
 
-let data; 
+let data;
 let widthScale;
 let sleepScale; 
 let colorScale; 
@@ -42,7 +50,7 @@ d3.json("data.json")
         console.log("Loaded", data.length, "days"); 
         createBatteryDashboard(data); 
     })
-    .catch(function (err) { // on error
+    .catch(function (err) { 
         console.error("Error loading data.json:", err);
     });
 
@@ -50,6 +58,19 @@ d3.json("data.json")
 // CREATE SCALES
 // ================================
 
+/*
+ * createScales - Initialize all D3 scales for the visualization
+ * 
+ * This function creates three scales to map data values to visual properties:
+ * 1. widthScale: Maps protein intake (110-150g) to battery width (50-85px)
+ * 2. sleepScale: Maps sleep hours (6.2-8.5h) to fill percentage (60%-85%)
+ * 3. colorScale: Maps restfulness rating (1-5) to colors (red to green)
+ * 
+ * Parameters:
+ *   dataset - Array of data objects (not currently used but available for dynamic scaling)
+ * 
+ * Returns: None (modifies global scale variables)
+ */
 function createScales(dataset) { 
 
     // Protein (grams) → battery width
@@ -77,17 +98,37 @@ function createScales(dataset) {
 // MAIN DASHBOARD FUNCTION
 // ================================
 
+/*
+ * createBatteryDashboard - Main visualization function that renders all batteries
+ * 
+ * This is the core function that:
+ * 1. Initializes scales via createScales()
+ * 2. Calculates optimal x,y positions for each battery in a grid layout
+ * 3. Creates battery visualizations for all 30 days using D3 data binding
+ * 4. Applies visual encodings (width, height, color, outlines)
+ * 5. Adds labels, terminals, and peak stars
+ * 6. Calls createLegend() to add the key
+ * 
+ * Layout: 9 batteries per row with dynamic spacing to center each row
+ * 
+ * Parameters:
+ *   dataset - Array of 30 data objects containing daily fitness metrics
+ * 
+ * Returns: None (renders SVG visualization)
+ */
 function createBatteryDashboard(dataset) {
 
     // Build scales using the dataset
     createScales(dataset);
 
-    let positions = []; 
+    let batteryPositions = []; 
     let totalRows = Math.ceil(dataset.length / BATTERIES_PER_ROW); 
     let startY = 100; 
 
     // --------------------------------
     // Compute x / y positions per day
+    // Strategy: Center each row of batteries horizontally,
+    // accounting for variable widths (protein affects width)
     // --------------------------------
     for (let row = 0; row < totalRows; row++) { 
 
@@ -98,7 +139,7 @@ function createBatteryDashboard(dataset) {
             continue;
         }
 
-        // Width for each battery in this row
+        // Calculate total width needed for this row's batteries
         let widths = rowData.map(function (d) { 
             return widthScale(d.protein); 
         });
@@ -110,18 +151,20 @@ function createBatteryDashboard(dataset) {
         let availableWidth = SVG_WIDTH - (BREATHING_ROOM * 2); 
         let gap;
 
-        
+        // Determine gap between batteries
+        // Partial rows use fixed 95px gap
+        // Full rows calculate gap dynamically to fill available width
         if (count < BATTERIES_PER_ROW) {
             gap = 95;   
         } else {
-            
             gap = (availableWidth - totalWidth) / (count - 1);
         }
 
         let x = BREATHING_ROOM;
 
+        // Build position array for this row
         for (let i = 0; i < count; i++) { 
-            positions[startIndex + i] = { 
+            batteryPositions[startIndex + i] = { 
                 x: x, 
                 y: startY + row * ROW_VERTICAL_SPACING 
             };
@@ -133,18 +176,24 @@ function createBatteryDashboard(dataset) {
     // DRAW BATTERIES
     // ================================
 
-    let groups = d3.select("#batteryViz")  
+    let batteryGroups = d3.select("#batteryViz")  
         .selectAll("g.battery") 
         .data(dataset) 
         .enter() 
         .append("g") 
         .attr("class", "battery") 
         .attr("transform", function (d, i) {  
-            return "translate(" + positions[i].x + "," + positions[i].y + ")"; 
+            return "translate(" + batteryPositions[i].x + "," + batteryPositions[i].y + ")"; 
+        })
+        .attr("role", "img")
+        .attr("aria-label", function (d) {
+            return "Day " + d.day + ": " + d.protein + " grams protein, " + 
+                   d.sleep + " hours sleep, " + d.duration + " minutes workout, " +
+                   "restfulness level " + d.restfulness;
         });
 
     // Sleep percentage label above battery (based on fill)
-    groups.append("text") 
+    batteryGroups.append("text") 
         .attr("x", function (d) { 
             return widthScale(d.protein) / 2; 
         })
@@ -158,11 +207,11 @@ function createBatteryDashboard(dataset) {
         });
 
     // Workout duration label (minutes)
-    groups.append("text") 
+    batteryGroups.append("text") 
         .attr("x", function (d) { 
             return widthScale(d.protein) / 2; 
         })
-        .attr("y", -45) // y position
+        .attr("y", -45) 
         .attr("text-anchor", "middle")
         .attr("font-size", "12px")
         .attr("font-weight", "600")
@@ -172,11 +221,11 @@ function createBatteryDashboard(dataset) {
         });
 
     // Battery terminal (top cap)
-    groups.append("rect") 
+    batteryGroups.append("rect") 
         .attr("x", function (d) { 
             return widthScale(d.protein) * 0.35;  
         })
-        .attr("y", -5) // y position
+        .attr("y", -5) 
         .attr("width", function (d) { 
             return widthScale(d.protein) * 0.3;         
         })
@@ -185,7 +234,7 @@ function createBatteryDashboard(dataset) {
         .attr("fill", "#2c3e50");
 
     // Battery outline with red/green highlight based on restfulness
-    groups.append("rect") 
+    batteryGroups.append("rect") 
         .attr("x", 0) 
         .attr("y", 2) 
         .attr("width", function (d) { 
@@ -197,7 +246,7 @@ function createBatteryDashboard(dataset) {
         .attr("stroke-width", 3)
         .attr("stroke", function (d) { 
             // Poor day = red outline
-            if (d.restfulness < 4) { // restfulness 1, 2, 3
+            if (d.restfulness < 4) { 
                 return "#e74c3c";
             }
             // Optimal recovery = green outline
@@ -209,11 +258,12 @@ function createBatteryDashboard(dataset) {
         });
 
     // Battery fill (height from sleep, color from restfulness)
-    groups.append("rect") 
+    batteryGroups.append("rect") 
         .attr("x", 2) 
         .attr("y", function (d) {  
+            // Calculate y position using reverse-Y logic (SVG top = 0)
             return 2 + (BATTERY_HEIGHT - (sleepScale(d.sleep) * BATTERY_HEIGHT)); 
-        }) //reverse-Y logic
+        })
         .attr("width", function (d) {
             return widthScale(d.protein) - 4;
         })
@@ -227,7 +277,7 @@ function createBatteryDashboard(dataset) {
         });
 
     // Day label under battery
-    groups.append("text")
+    batteryGroups.append("text")
         .attr("x", function (d) {
             return widthScale(d.protein) / 2; 
         })
@@ -241,7 +291,7 @@ function createBatteryDashboard(dataset) {
         });
 
     // Sleep hours label under day label
-    groups.append("text")
+    batteryGroups.append("text")
         .attr("x", function (d) {
             return widthScale(d.protein) / 2;
         })
@@ -254,7 +304,7 @@ function createBatteryDashboard(dataset) {
         });
 
     // Star marker on peak restfulness days (restfulness = 5)
-    let starGroup = groups
+    let starGroup = batteryGroups
         .filter(function (d) {
             return d.restfulness === 5;
         })
@@ -279,6 +329,20 @@ function createBatteryDashboard(dataset) {
 // LEGEND
 // ================================
 
+/*
+ * createLegend - Draw the comprehensive legend at the bottom of the SVG
+ * 
+ * Creates a multi-part legend explaining all visual encodings:
+ * - Width legend showing protein intake mapping
+ * - Fill level legend showing sleep duration mapping
+ * - Color legend showing restfulness color scale
+ * - Gradient bar showing full restfulness spectrum
+ * 
+ * All legend elements are centered at the bottom of the 1600x1600 SVG canvas
+ * 
+ * Parameters: None
+ * Returns: None (appends SVG elements to #batteryViz)
+ */
 function createLegend() {
 
     const LEGEND_WIDTH = 1400;
@@ -289,7 +353,7 @@ function createLegend() {
     let legend = d3.select("#batteryViz")
         .append("g")
         .attr("class", "legend-group")
-        .attr("transform", "translate(" + legendX + "," + legendY + ")"); // center at bottom
+        .attr("transform", "translate(" + legendX + "," + legendY + ")");
 
     // Legend background panel
     legend.append("rect")
@@ -302,23 +366,23 @@ function createLegend() {
 
     // Legend title text
     legend.append("text")
-        .attr("x", LEGEND_WIDTH / 2) // center horizontally
-        .attr("y", 28) // y position
+        .attr("x", LEGEND_WIDTH / 2) 
+        .attr("y", 28) 
         .attr("text-anchor", "middle")
         .attr("font-size", "17px")
         .attr("font-weight", "bold")
         .attr("fill", "#1976D2")
-        .text("HOW TO READ: width = protein (g), fill = sleep (h), color = restfulness (1–5), workout = minutes"); // legend title
+        .text("HOW TO READ: width = protein (g), fill = sleep (h), color = restfulness (1–5), workout = minutes");
 
     const columnWidth = LEGEND_WIDTH / 3;
-    const baseY = 60; // base y position for legend items
+    const baseY = 60;
 
     // ---------------------------
     // WIDTH LEGEND (protein)
     // ---------------------------
 
     let widthG = legend.append("g")
-        .attr("transform", "translate(" + (columnWidth * 0 + columnWidth / 2 - 60) + "," + baseY + ")"); // first column
+        .attr("transform", "translate(" + (columnWidth * 0 + columnWidth / 2 - 60) + "," + baseY + ")");
 
     widthG.append("rect")
         .attr("x", 0)
@@ -470,7 +534,7 @@ function createLegend() {
         .attr("width", 22)
         .attr("height", 35)
         .attr("rx", 3)
-        .attr("fill", "#f39c12")
+        .attr("fill", "#f31212ff")
         .attr("stroke", "black")
         .attr("stroke-width", 2);
 
@@ -526,7 +590,7 @@ function createLegend() {
     // ---------------------------
 
     const gradWidth = 220;
-    const gradX = columnWidth * 2 + columnWidth / 2 - gradWidth / 2 - 10; // center under color legend
+    const gradX = columnWidth * 2 + columnWidth / 2 - gradWidth / 2 - 10;
     const gradY = baseY + 50;
 
     let grad = legend.append("defs")
