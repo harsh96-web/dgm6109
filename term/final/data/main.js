@@ -1,14 +1,14 @@
-// Hypothesis: As workout duration increases, sleep hours and restfulness will improve.
-// Data collected daily from 25-Sep-2025 to 22-Oct-2025
+// Hypothesis: As protein intake increases, sleep hours and restfulness will improve.
+// Data collected daily from 25-Sep-2025 to 24-Oct-2025 (30 days)
 
 let workoutData = [
   {
     date: "2025-09-25",
     duration: 0,
-    exercises: [], // no workout
+    exercises: [],
     sleep: { hours: 7.0, wakeups: 1 },
     protein: 115,
-    restfulness: 4, // Good
+    restfulness: 4,
     notes: "University day — no workout."
   },
   {
@@ -20,7 +20,7 @@ let workoutData = [
     ],
     sleep: { hours: 7.0, wakeups: 1 },
     protein: 125,
-    restfulness: 4, // Good
+    restfulness: 4,
     notes: "Better focus, slept well."
   },
   {
@@ -226,8 +226,121 @@ let workoutData = [
     protein: 144,
     restfulness: 5,
     notes: "Great end of training cycle."
+  },
+  {
+    date: "2025-10-15",
+    duration: 60,
+    exercises: [
+      { exercise: "Shoulder Press", sets: 3, reps: 10 },
+      { exercise: "Rows", sets: 3, reps: 12 }
+    ],
+    sleep: { hours: 7.1, wakeups: 1 },
+    protein: 128,
+    restfulness: 4,
+    notes: "Moderate training, good balance."
+  },
+  {
+    date: "2025-10-16",
+    duration: 0,
+    exercises: [],
+    sleep: { hours: 7.3, wakeups: 2 },
+    protein: 116,
+    restfulness: 3,
+    notes: "Rest / university day."
+  },
+  {
+    date: "2025-10-17",
+    duration: 82,
+    exercises: [
+      { exercise: "Squats", sets: 4, reps: 10 },
+      { exercise: "Bench Press", sets: 3, reps: 10 }
+    ],
+    sleep: { hours: 7.9, wakeups: 1 },
+    protein: 140,
+    restfulness: 4,
+    notes: "Solid compound session."
+  },
+  {
+    date: "2025-10-18",
+    duration: 92,
+    exercises: [
+      { exercise: "Deadlift", sets: 4, reps: 8 },
+      { exercise: "Pull-ups", sets: 4, reps: 10 }
+    ],
+    sleep: { hours: 8.1, wakeups: 0 },
+    protein: 145,
+    restfulness: 5,
+    notes: "Slept deeply and woke up energized."
+  },
+  {
+    date: "2025-10-19",
+    duration: 40,
+    exercises: [
+      { exercise: "Dips", sets: 3, reps: 10 },
+      { exercise: "Lunges", sets: 2, reps: 12 }
+    ],
+    sleep: { hours: 6.6, wakeups: 2 },
+    protein: 118,
+    restfulness: 3,
+    notes: "Short workout, restless night."
+  },
+  {
+    date: "2025-10-20",
+    duration: 75,
+    exercises: [
+      { exercise: "Bench Press", sets: 3, reps: 10 },
+      { exercise: "Rows", sets: 3, reps: 12 }
+    ],
+    sleep: { hours: 6.8, wakeups: 2 },
+    protein: 121,
+    restfulness: 3,
+    notes: "Felt under-recovered."
+  },
+  {
+    date: "2025-10-21",
+    duration: 88,
+    exercises: [
+      { exercise: "Leg Press", sets: 4, reps: 12 },
+      { exercise: "Squats", sets: 3, reps: 10 }
+    ],
+    sleep: { hours: 8.0, wakeups: 1 },
+    protein: 139,
+    restfulness: 4,
+    notes: "Good energy through the day."
+  },
+  {
+    date: "2025-10-22",
+    duration: 95,
+    exercises: [
+      { exercise: "Deadlift", sets: 5, reps: 8 },
+      { exercise: "Pull-ups", sets: 4, reps: 12 }
+    ],
+    sleep: { hours: 8.3, wakeups: 0 },
+    protein: 147,
+    restfulness: 5,
+    notes: "Another peak day."
+  },
+  {
+    date: "2025-10-23",
+    duration: 55,
+    exercises: [
+      { exercise: "Shoulder Press", sets: 3, reps: 10 },
+      { exercise: "Dips", sets: 3, reps: 10 }
+    ],
+    sleep: { hours: 7.2, wakeups: 1 },
+    protein: 128,
+    restfulness: 4,
+    notes: "Moderate training, good mood."
+  },
+  {
+    date: "2025-10-24",
+    duration: 0,
+    exercises: [],
+    sleep: { hours: 7.0, wakeups: 1 },
+    protein: 120,
+    restfulness: 4,
+    notes: "Final rest day in the cycle."
   }
-]; // end list workoutData
+];
 
-// document.write("<pre>" + JSON.stringify(workoutData, null, 2) + "</pre>");
-document.write("<pre>" + JSON.stringify(workoutData, null, 2) + "</pre>"); // required to show data
+document.write("<pre>" + JSON.stringify(workoutData, null, 2) + "</pre>");
